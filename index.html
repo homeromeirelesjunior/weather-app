@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container my-3 mx-auto">
+        <h1 class="text-center ">Informações do Clima</h1>
+
+        <form data-js="form-location" class="my-4 text-center">
+            <label for="city">Digite o nome da cidade</label>
+            <input class="form-control p-2" type="text" name="city" placeholder="Ex: Franca" autofocus autocomplete="off">
+        </form>
+
+        <div data-js="city-card" class="card d-none">
+            <img data-js="img-current" src="https://via.placeholder.com/400x300" class="card-img-top">
+            <div class="card-body">
+                <div data-js="time-icon" class="bg-light mx-auto text-center"></div>
+                <div data-js="weather-icon" class="d-flex align-items-center"></div>               
+                <h5 data-js="city-name" class="text-center my-3 fs-3">Cidade</h5>
+                <div data-js="city-weather" class="text-center my-3 fs-4">Clima</div>
+                <div class="text-center">
+                    <span data-js="city-temperature" class="fs-1">00</span>
+                    <span class="fs-1">&deg;C</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./js/weather.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
