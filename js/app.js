@@ -1,3 +1,4 @@
+
 const cityForm = document.querySelector('[data-js="form-location"]')
 const cityName = document.querySelector('[data-js="city-name"]')
 const cityWeather = document.querySelector('[data-js="city-weather"]')
