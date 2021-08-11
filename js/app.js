@@ -31,7 +31,7 @@ const showCityCard = () => {
 cityForm.addEventListener('submit', async event => {
     event.preventDefault()
     
-    inputValue = event.target.city.value
+    const inputValue = event.target.city.value
     
     const [{ Key, LocalizedName }] = await getCityData(inputValue)
     const [{ IsDayTime, Temperature, WeatherIcon, WeatherText }] = await getCityWeather(Key)     
