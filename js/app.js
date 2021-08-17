@@ -14,13 +14,8 @@ const handleHTML = (selectedWeatherIcon, LocalizedName, WeatherText, Temperature
     cityTemperature.textContent = Temperature.Metric.Value
 }
 
-const isDayOrNight = IsDayTime => {
-    if (IsDayTime) {
-        imgTime.src = './src/day.svg'
-    } else {
-        imgTime.src = './src/night.svg'
-    }
-}
+const isDayOrNight = IsDayTime => 
+    IsDayTime ? imgTime.src = './src/day.svg' : imgTime.src = './src/night.svg'
 
 const showCityCard = () => {
     if (cityCard.classList.contains('d-none')) {
@@ -28,18 +23,33 @@ const showCityCard = () => {
     }
 }
 
-cityForm.addEventListener('submit', async event => {
-    event.preventDefault()
-    
-    const inputValue = event.target.city.value
-    
+const showCityWeatherInfo = async (inputValue) => {
     const [{ Key, LocalizedName }] = await getCityData(inputValue)
     const [{ IsDayTime, Temperature, WeatherIcon, WeatherText }] = await getCityWeather(Key)     
     const selectedWeatherIcon = `<img src="./src/icons/${WeatherIcon}.svg">`    
 
     showCityCard()
     isDayOrNight(IsDayTime)
-    handleHTML(selectedWeatherIcon, LocalizedName, WeatherText, Temperature)
+    handleHTML(selectedWeatherIcon, LocalizedName, WeatherText, Temperature) 
+}
+
+const showLocalStorageInfo = () => {
+    const city = localStorage.getItem('city')
+
+    if(city) {
+        showCityWeatherInfo(city)
+    }
+}
+
+cityForm.addEventListener('submit', event => {
+    event.preventDefault()
+    
+    const inputValue = event.target.city.value
+    
+    showCityWeatherInfo(inputValue)
+    localStorage.setItem('city', inputValue)
 
     cityForm.reset()
 })
+
+showLocalStorageInfo()
